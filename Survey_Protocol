@@ -1,0 +1,34 @@
+This survey will take about 30 minutes. To make it easier for you to complete, you will have 24 hours to finish it. Thanks!
+
+Smart Contract Security Practices
+_____________________________________________
+
+1. Are you 18 years or older? [yes, no]
+2. Do you agree that your survey response to be used in presentations for academic or research purposes? [yes, no]
+3. Do you identify yourself as smart contract (solidity) developer or identify as having familiarity with smart contract (solidity) development?  [yes, no, other]
+4. What is your gender? [Male, Female, Other]
+5. What is your age range? [18-25, 25-34, 35-44, 45-54, 55-64, 65-74, 75+, Others]
+6. What is your highest level of educational achievement? [Less than high school, Some high school, High school graduate, Diploma or the equivalent (for example: GED), Some college credit, Trade/technical/vocational training, Associate degree, Bachelor’s degree, Master’s degree, Professional degree, Doctorate degree, No degree, Others]
+7. Which category best describes you? [White (Eg: German, Irish, English, Italian, Polish, French, etc), Hispanic, Latino or Spanish origin (Eg: Mexican or Mexican American, Puerto Rican, Cuban, Salvadoran, Dominican, Colombian, etc), Black or African American (Eg: African American, Jamaican, Haitian, Nigerian, Ethiopian, Somalian, etc), Asian (Eg: Chinese, Filipino, Asian Indian, Vietnamese, Korean, Japanese, etc), American Indian or Alaska Native(Eg: Navajo nation, Blackfeet tribe, Mayan, Aztec, Native Village or Barrow Inupiat Traditional Government, Nome Eskimo Community, etc), Middle Eastern or North African (Eg: Lebanese, Iranian, Egyptian, Syrian, Moroccan, Algerian, etc), Native Hawaiian or Other Pacific Islander (Eg: Native Hawaiian, Samoan, Chamorro, Tongan, Fijian, etc), Some other race, ethnicity or origin, Prefer not to say]
+8. Are you working full-time in the cryptocurrency or blockchain industry?  [Yes, No, Other]
+9. How many years of smart contract development experience do you have? [Number entry]
+10. Which programming language(s) do you use for smart contract development?  [Select all that apply] [Solidity, Viper, Rust, Other, please specify]
+11. What’s your main role in blockchain application development? (please select all that apply) [Select all that apply] [Protocol development, Smart contract development, Research, Community engagement, Dapps UI/UX, Security assessment, Tokenomics, Others, please specify]
+12. What are the main information sources that you use to learn about smart contract (solidity) development? (please select all that apply) [Google search, Solidity Documentation, Youtube, OpenZepplin, Stack Overflow, ConsenSys, GitHub, Other, please specify]
+13. What are the main tools that you use in (solidity) smart contract development? (please select all that apply) [Ganache, Remix IDE, Geth, HardHat, Waffle, Truffle, Vscode, Other, please specify]
+14. What are the Open Source libraries/code/standards, if any, that you use during smart contract development? [open text]
+15. Do you have experience with reviewing (solidity) smart contract code? [Yes, no, Other, please specify]
+16. Do you have code review experience with other programming languages? [Yes, please specify, No, Other, please specify]
+17. In your opinion, what is important in smart contract development? [1: less important;  5: more important] [Functionality correctness, Gas efficiency, Security, Code optimization, Maintainability, User experience]
+18. Where have you learned about smart contract security? (select all that apply) [Solidity documentation, News, Tutorials, Workshops, Hackathon, Other, please specify]
+19. What tools or resources do you use for smart contract security? (select all that apply) [Manual inspection, Slither, MythX, Remix, HardHat, Security Plugins, please specify, Other, please Specify]
+20. Are you aware of any security vulnerabilities in the context of smart contracts? Please specify.
+21. Imagine your dream tool for smart contract security, what features should this tool have?
+
+Code Review Block
+___________________________________________
+1. Do you think this code needs further improvement? [yes, no, I don't know] [if "no", skip to Q4, if "I don't know", skip to Q4]
+2. If yes, what issue(s) does this code have? [Please explain briefly the areas of improvement]
+3. How do you solve the issue(s)? [Please write down the improved code or describe your improvement strategy in the text box]
+4. What resources or tools did you use for this task? 
+5. How would you rate the difficulty of this task?  (1 - not difficult at all, 10 - most difficult)

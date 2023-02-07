@@ -1,0 +1,65 @@
+//Suppose that your colleagues have worked on an ERC token named SampleToken that can perform balance transfers to receivers (different user accounts) with authorized checking of a certain amount of values (balance) in the sender account. As a smart contract developer, you are asked to review the code for the token’s logical checks for sending balances to receivers’ accounts so that your contract is in good standing and the exchange can avoid any unexpected freezing.
+
+//You are asked to do a code review to maintain the quality of the code. Please review the code and then 1) identify any areas for improvement, and 2) revise the code accordingly (if needed).
+//You can use Remix IDE or any tools/IDEs you prefer during the code review.
+
+ 
+
+// SPDX-License-Identifier: UNLICENSED
+
+pragma solidity 0.6.6;
+
+contract SampleToken {
+
+ 
+    event Transfer(address indexed from, address indexed to, uint256 value);     
+
+    mapping (address=>uint) balances; 
+
+ 
+    function batchTransfer(address[] memory _receivers, uint256 _value) public payable returns (bool) {
+
+ 
+        uint cnt = _receivers.length;
+
+        uint256 amount = uint256(cnt) * _value;
+
+        require(cnt > 0 && cnt <= 20);
+
+        require(_value > 0 && balances[msg.sender] >= amount);
+
+        balances[msg.sender] = balances[msg.sender] - amount;
+
+        for (uint i = 0; i < cnt; i++) {
+
+ 
+            balances[_receivers[i]] = balances[_receivers[i]] + _value;
+
+ 
+           emit Transfer(msg.sender, _receivers[i], _value);
+
+        }
+
+ 
+        return true;
+
+ 
+     }
+
+        function deposit() public payable{
+
+ 
+            balances[msg.sender] = msg.value;
+
+    }
+
+        function getBalance() public view returns (uint){
+
+ 
+            return balances[msg.sender];
+
+ 
+    }
+
+ 
+}

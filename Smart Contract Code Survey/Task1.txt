@@ -1,0 +1,39 @@
+//Your colleagues have written this contract to implement the functions for depositing, withdrawing, and updating crypto assets/tokens on the blockchain as a crypto asset account. Suppose that the terms, events, execution, and settlement conditions are predefined.  
+//You are asked to do a code review to maintain the quality of the code. Please review the code and then 1) identify any areas for improvement, and 2) revise the code accordingly (if needed).
+Y//ou can use Remix IDE or any tools/IDEs you prefer during the code review.
+
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.7.4;
+
+ 
+contract SampleToken{ 
+
+ 
+  mapping (address => uint) public bal;
+
+ 
+  function deposit() public payable{
+
+ 
+    bal[msg.sender] += msg.value; 
+
+    }
+
+ 
+  function withdraw(uint amount) public {
+
+    require(bal[msg.sender] >= amount); 
+
+    (bool sent, ) = msg.sender.call{value: amount}(""); 
+
+     bal[msg.sender] -= amount; 
+
+  }  
+
+  function updateBal() public view returns(uint){
+
+     return address(this).balance; 
+
+  }
+
+}
